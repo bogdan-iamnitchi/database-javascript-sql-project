@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FLYair</title>
+    <link rel="stylesheet" href="/css/main_tabele.css">
+	<link rel="shortcut icon" href="/img/ticket.png">
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">FLYair</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="/home/dashboard">HOME</a></li>
+                    <li><a href="/interogari">INTEROGARI</a></li>
+                    <li><a href="/clienti">CLIENTI</a></li>
+                    <li><a href="/zboruri">ZBORURI</a></li>
+                    <li><a href="/bilete">BILETE</a></li>
+                    <li><a href="/cupoane">CUPOANE</a></li>
+                    
+                    <div class="search">
+                        <a href="/home/logout"><button class="btn">LOG OUT</button></a>
+                    </div>
+
+                </ul>
+            </div>
+        </div> 
+
+        <div class="dash_content content">
+            <h1>Ai accesat tabela ZBORURI:</h1>
+            <p class="par">Acum ai acces deplin la diverse informatii legate de la anumite <i>zboruri</i>.
+                <br>Te rog sa introduci <u>numar zborului (ex: AIF213)</u> dorit sau <u>data de plecare (ex. 15-12-2022)</u>:
+            </p>
+
+            
+            <table class="content-table">
+                <thead>
+                  <tr>
+                    <th>Nr.zbor</th>
+                    <th>Plecare</th>
+                    <th>Sosire</th>
+                    <th>De la</th>
+                    <th>La</th>
+                    <th>Aparat zbor</th>
+                    <th>Nr.locuri</th>
+                  </tr>
+                </thead>
+                <tbody class="<%= hidden %>">
+                    <% if (results.length > 0) {%>
+                        <% for(let i=0; i<results.length; i++ ){ %>
+                            <tr>
+                            <% for(let j=0; j<results[i].length; j++) { %>
+                                
+                                    <td><%= results[i][j] %></td>
+                                
+                            <%}%>
+                            </tr>
+                        <%}%>
+                    <%}%>
+                    <%if(results.length == 0){%>
+                        <tr><td class="no_data" colspan="7">No data found</td></tr>
+                    <%}%>
+                </tbody>
+              </table>
+
+            <form class="tab-form" action="/interogareZboruri" method="POST">
+                <input id="search" type="text" name="value1" value="" placeholder="Nr.Zbor ">
+                <input id="search" type="text" name="value2" value="" placeholder="Data " ><br>
+                <p class="mai_jos" tyle="text-align: center;">
+                    <button style="background-color: transparent; border: none;" type="submit"><a class="button" href="/zboruri">Clear</a></button>
+                    <button style="background-color: transparent; border: none;" type="submit"><a class="button">Ruleaza</a></button>
+                </p>
+            </form>
+
+        </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FLYair</title>
+    <link rel="stylesheet" href="/css/main.css">
+	<link rel="shortcut icon" href="/img/ticket.png">
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">FLYair</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">INTEROGARI</a></li>
+                    <li><a href="#">CLIENTI</a></li>
+                    <li><a href="#">ZBORURI</a></li>
+                    <li><a href="#">BILETE</a></li>
+                    <li><a href="#">CUPOANE</a></li>
+                </ul>
+            </div>
+
+        </div> 
+
+        <div class="content">
+            <h1>Bine ati venit la<br><span>FLYair</span> <br>Vezi orice zbor</h1>
+            <p class="par">Pentru a putea accesa informatii despre anumite zboruri, rute
+				<br> sau bilete, trebuie mai intai sa te conectezi cu contul creat.
+                <br> Daca nu ai un cont, il poti crea chiar acum!</p>
+
+                <button class="cn"><a href="/signup">CREAZA CONT NOU</a></button>
+
+                <form class="form" action="/login" method="POST">
+                    <h2>Conecteaza-te</h2>
+                    
+                    <% if (message.length > 0) { %>
+                        <div class="form__input-message <%= error%>"><%= message %></div>
+                    <% }%>
+                    <input id="login_email" type="email" name="email" autofocus placeholder="Adresa Email">
+                    <input id="login_password" type="password" name="password" placeholder="Parola">
+                    <button class="btnn" type="submit"><a>Login</a></button>
+
+                    <p class="link">Daca nu ai cont<br>
+                    <a href="/signup">Inregistreaza-te </a> aici</a></p>
+                    <p class="liw">Pentru mai multe intrebari:</p>
+
+                    <div class="icons">
+                        <a href="https://www.facebook.com/bogdan.iamnitchi.77/"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+                    </div>
+
+                </form>
+        </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>

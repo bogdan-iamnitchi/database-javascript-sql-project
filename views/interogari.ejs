@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FLYair</title>
+    <link rel="stylesheet" href="/css/main_interogari.css">
+	<link rel="shortcut icon" href="/img/ticket.png">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+</head>
+<body onload="stopScroll('popup')">
+
+    <div class="main" id="main">
+        <div class="navbar <%= blur %>" id="navbar">
+            <div class="icon">
+                <h2 class="logo">FLYair</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="/home/dashboard">HOME</a></li>
+                    <li><a href="/interogari">INTEROGARI</a></li>
+                    <li><a href="/clienti">CLIENTI</a></li>
+                    <li><a href="/zboruri">ZBORURI</a></li>
+                    <li><a href="/bilete">BILETE</a></li>
+                    <li><a href="/cupoane">CUPOANE</a></li>
+                    
+                    <div class="search">
+                        <a href="/home/logout"><button class="btn">LOG OUT</button></a>
+                    </div>
+
+                </ul>
+            </div>
+        </div> 
+
+<!-- AICI SUNT PANOURILE POPUP-->
+        <!-- POPUP 3A-->
+        <div style="position: absolute;">
+        <div class="box">
+            <div class="popup card <%= openPopup%>" id="popup">
+                <i class="<%=icon%>"></i>
+                <h5><%= titlu %></h5>
+                <div class="pra">
+                    <p><%= cerinta %></p>
+
+                    <table class="content-table" id="pop_table">
+                        <thead><tr>
+                            <% if (tHead.length > 0) {%>
+                                <% for(let i=0; i<tHead.length; i++ ){ %>
+                                    
+                                        <th><%= tHead[i] %></th>
+                                    
+                                <%}%>
+                            
+                            <%}%>
+                            <%if(tHead.length == 0){%>
+                                <tr><td colspan='<%=tHead.length%>'>No data found</td></tr>
+                            <%}%>
+                        </tr></thead>
+                        <tbody>
+                        
+                            <% if (results.length > 0) {%>
+                                <% for(let i=0; i<results.length; i++ ){ %>
+                                    <tr>
+                                    <% for(let j=0; j<results[i].length; j++) { %>
+                                        
+                                            <td><%= results[i][j] %></td>
+                                        
+                                    <%}%>
+                                    </tr>
+                                <%}%>
+                            <%}%>
+                            <%if(results.length == 0){%>
+                                <tr><td colspan="<%= tHead.length %>">No data found</td></tr>
+                            <%}%>
+                    
+                        </tbody>
+                        </table>
+
+                    <div style="text-align: center;">
+                        <a class="button" href="/interogari">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+
+
+<!--AICI SUNT PANOURILE CU INTEROGARILE-->
+        <div class="" id="service">
+        <div class="service" >
+            <div class="title">
+                <h2>Bine ai venit, <%= message %></h2>
+            </div>
+            <div class="box">
+                <!-- INTEROGARE 3A-->
+                <div class="card" id="int3A">
+                    <i class="fas fa-bars"></i>
+                    <h5>Interogarea 3A</h5>
+                    <div class="pra">
+                        <p>Să se găsească clasa, sursa și destinația biletelor pentru idclient între 100 și 200 ordonat descrescător după valoare și crescător după sursa.</p>
+                        
+                        <form class="tab-form" action="/interogare3A" method="POST">
+                            <input id="search" type="text" name="value1" value="100">
+                            <input id="search" type="text" name="value2" value="200"><br>
+                            <p class="mai_jos" tyle="text-align: center;">
+                                <button style="background-color: transparent; border: none;" type="submit"><a class="button" type="submit">Ruleaza</a></button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <!-- INTEROGARE 3B-->
+                <div class="card" id="int3B">
+                    <i class="far fa-user"></i>
+                    <h5>Interogarea 3B</h5>
+                    <div class="pra">
+                        <p>Să se găsească aparatele de zbor cu număr locuri sub 100 ordonat descrescător după nr_locuri.</p>
+    
+                        <form class="tab-form" style="transform: translate(0, 28px)" action="/interogare3B" method="POST">
+                            <input id="search" type="text" name="value1" value="100"><br>
+                            <p class="mai_jos" tyle="text-align: center;">
+                                <button style="background-color: transparent; border: none;" type="submit"><a class="button" type="submit">Ruleaza</a></button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <!-- INTEROGARE 4A-->
+                <div class="card" id="int4A">
+                    <i class="far fa-bell"></i>
+                    <h5>Interogarea 4A</h5>
+                    <div class="pra">
+                        <p>Să se găsească pentru clientul cu numele ’John Doe’ detaliile călătoriilor efectuate cu escală la ’Londra’.</p>
+    
+                        <form class="tab-form" action="/interogare4A" method="POST">
+                            <input id="search" type="text" name="value1" value="John Doe">
+                            <input id="search" type="text" name="value2" value="London"><br>
+                            <p class="mai_jos" tyle="text-align: center;">
+                                <button style="background-color: transparent; border: none;" type="submit"><a class="button" type="submit">Ruleaza</a></button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service">
+            <div class="box">
+                <!-- INTEROGARE 4B-->
+                <div class="card" id="int4B">
+                    <i class="fas fa-address-book"></i>
+                    <h5>Interogarea 4B</h5>
+                    <div class="pra">
+                        <p>Să se găsească perechi de cupoane (nrbilet, nrzbor1, plecare1, nrzbor2, plecare2) cu condiția să fie pentru același bilet. O pereche este unică în rezultat.</p>
+                        
+                        <form class="tab-form" action="/interogare4B" method="POST">
+                            <input id="search" style="pointer-events: none;" type="text" name="value1" value="No changes"><br>
+                            <p class="mai_jos" tyle="text-align: center;">
+                                <button style="background-color: transparent; border: none;" type="submit"><a class="button">Ruleaza</a></button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <!-- INTEROGARE 5A-->
+                <div class="card" id="int5A">
+                    <i class="far fa-envelope-open"></i>
+                    <h5>Interogarea 5A</h5>
+                    <div class="pra">
+                        <p>Să se găsească numele clienților al căror bilet are valoarea cea mai mică între biletele din clasa ’Business’.</p>
+                        <form class="tab-form"  action="/interogare5A" method="POST">
+                            <input id="search" type="text" name="value1" value="Business"><br>
+                            <p class="mai_jos" tyle="text-align: center;">
+                                <button style="background-color: transparent; border: none;" type="submit"><a class="button" type="submit">Ruleaza</a></button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <!-- INTEROGARE 5B-->
+                <div class="card" id="int5B">
+                    <i class="far fa-id-badge"></i>
+                    <h5>Interogarea 5B</h5>
+                    <div class="pra">
+                        <p>Să se găsească biletele clienților ce au același statut ca și clientul ’John Doe’ și destinația ’Londra’.</p>
+                        <form class="tab-form" style="transform: translate(0, 28px)" action="/interogare5B" method="POST">
+                            <input id="search" type="text" name="value1" value="John Doe">
+                            <input id="search" type="text" name="value2" value="London"><br>
+                            <p class="mai_jos" tyle="text-align: center;">
+                                <button style="background-color: transparent; border: none;" type="submit"><a class="button" type="submit">Ruleaza</a></button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service">
+            <div class="box">
+                <!-- INTEROGARE 6A-->
+                <div class="card" id="int6A">
+                    <i class="fa fa-key"></i>
+                    <h5>Interogarea 6A</h5>
+                    <div class="pra">
+                        <p>Să se găsească pentru fiecare zbor cu plecare în anul 2022 numărul de locuri ocupate.</p>
+                        <form class="tab-form"  action="/interogare6A" method="POST">
+                            <input id="search" type="text" name="value1" value="2022"><br>
+                            <p class="mai_jos" tyle="text-align: center;">
+                                <button style="background-color: transparent; border: none;" type="submit"><a class="button" type="submit">Ruleaza</a></button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <!-- INTEROGARE 6B-->
+                <div class="card" id="int6B">
+                    <i class="fa fa-phone-square"></i>
+                    <h5>Interogarea 6B</h5>
+                    <div class="pra">
+                        <p>Să se găsească pentru fiecare client valoarea minimă, medie și maximă a biletelor.</p>
+                        <form class="tab-form" action="/interogare6B" method="POST">
+                            <input id="search" style="pointer-events: none;" type="text" name="value1" value="No changes"><br>
+                            <p class="mai_jos" tyle="text-align: center;">
+                                <button style="background-color: transparent; border: none;" type="submit"><a class="button" type="submit">Ruleaza</a></button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="/scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FLYair</title>
+    <link rel="stylesheet" href="css/main.css">
+	<link rel="shortcut icon" href="img/ticket.png">
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">FLYair</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">INTEROGARI</a></li>
+                    <li><a href="#">CLIENTI</a></li>
+                    <li><a href="#">ZBORURI</a></li>
+                    <li><a href="#">BILETE</a></li>
+                    <li><a href="#">CUPOANE</a></li>
+                    <li><a href="#">DESPRE</a></li>
+                </ul>
+            </div>
+
+        </div> 
+        <div class="content">
+                <form class="form form_signup" action="/signup" method="POST">
+                    <h2>Creeaza cont nou</h2>
+                    <% if (message.length > 0) { %>
+                        <div class="form__input-error-message"><%= message %></div>
+                    <% }%>
+                    <input id="signup_name" type="text" name="name" autofocus placeholder="Numele Complet">
+                    <input id="signup_email" type="email" name="email" autofocus placeholder="Adresa Email">
+                    <input id="signup_password" type="password" name="password" autofocus placeholder="Parola">
+                    <input id="signup_con_password" type="password" name="con_password" placeholder="Confirma Parola">
+                    <button class="btnn" type="submit"><a>Continua</a></button>
+
+                    <p class="link">Ai deja un cont?<br>
+                    <a href="/login">Conecteaza-te </a> aici</a></p>
+                    <p class="liw">Pentru mai multe intrebari:</p>
+
+                    <div class="icons">
+                        <a href="https://www.facebook.com/bogdan.iamnitchi.77/"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+                    </div>
+
+                </form>
+        </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>
